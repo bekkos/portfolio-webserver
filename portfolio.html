@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bekkos.tech</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/general.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/portfolio.css') }}">
+    <script src="{{ url_for('static', filename='/javascript/navlogic.js') }}"></script>
+</head>
+
+<body>
+    <nav>
+        <h2 id="title" class="box">bekkos.tech</h2>
+        <p id="underline">Martin Isaksen Bekkos</p>
+    </nav>
+    <div class="list-container">
+        <div class="litem selected" onclick="redirect(' ');">Back</div>
+        <div class="litem" onclick="redirect('cv');">CV</div>
+        <div class="litem" onclick="redirect('contact');">Contact</div>
+    </div>
+    
+    <div class="portfolio-wrapper">
+        <div class="section">
+            <h1>Qnote</h1>
+            <p>Quick Note</p>
+            <small>2021</small>
+            <br><br>
+            <p>Easy-to-use notetaking web-application with support for LaTeX-math notation.</p>
+            <p>
+                Built with a Java Spring Boot-backend, PostgreSQL-database and implements the MathJax javascript-library for 
+                LaTex-parsing.
+            </p>
+            <br>
+            <a href="https://github.com/bekkos/qN---Quick-Note" target="_blank">github</a><br>
+            <a href="#" target="_blank">website</a>
+        </div>
+        <div class="section">
+            <h1>Wacker Features</h1>
+            <p>Website</p>
+            <small>2021</small>
+            <br><br>
+            <p>Publishing platform for journalistic articles and interactive webstories.</p>
+            <p>
+                Built with a Python Flask-backend and implements the a custom-built CSS/JS-framework along with AOS.js (Animate-On-Scroll) for interactive
+                web-articles. Runs on an Ubuntu WSGI.
+            </p>
+            <br>
+            <a href="https://wackerfeatures.no" target="_blank">website</a>
+        </div>
+    </div>
+    
+</body>
+
+</html>
