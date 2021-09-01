@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solitare</title>
+    <link rel="stylesheet" href="./css/general.css">
+    
+</head>
+<body>
+    <div class="wrapper">
+        <div id="gameScene">
+            <div id="top-deck">
+                <div id="left">
+                    <div class="box stack" id="completionStackOne" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        
+                    </div>
+                    <div class="box stack" id="completionStackTwo" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        
+                    </div>
+                    <div class="box stack" id="completionStackThree" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        
+                    </div>
+                    <div class="box stack" id="completionStackFour" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        
+                    </div>
+                </div>
+                <div id="right">
+                    <div class="box stack" id="shuffleStack" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        
+                    </div>
+                        <button class="bn54" onclick="shuffle();">
+                          <span class="bn54span">Shuffle</span>
+                        </button>
+                </div>
+            </div>
+            <div id="play-deck">
+                <div class="stack" id="stackOne" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    
+                </div>
+                <div class="stack" id="stackTwo" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    
+                </div>
+                <div class="stack" id="stackThree" ondrop="drop(event)" ondragover="allowDrop(event)">
+                   
+                </div>
+                <div class="stack" id="stackFour" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    
+                </div>
+                <div class="stack" id="stackFive" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    
+                </div>
+                <div class="stack" id="stackSix" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    
+                </div>
+                <div class="stack" id="stackSeven" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./javascript/logic.js"></script>
+</body>
+</html>

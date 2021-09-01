@@ -1,0 +1,7 @@
+// TODO:
+- Add a check that ensures that the first card added to the completion
+stack is an ace.
+
+- Prevent adding cards to the shufflestack.
+
+
