@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock - Paper - Scissors</title>
+    <link rel="stylesheet" href="./css/general.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div id="textContainer">
+            <h1>ROCK - PAPER - SCISSORS</h1>
+            <p id="underline">INITIALIZING GAME</p>
+        </div>
+        <div id="gameContainer">
+            <h1 id="resultDisplay"></h1>
+            <div id="scoreContainer">
+                <h2 id="userScore">YOUR SCORE: 1</h2>
+                <h2 id="opponentScore">OPPONENT SCORE: 4</h2>
+            </div>
+            <div id="gameScene">
+                <div id="userSide">
+
+                </div>
+                <div id="opponentSide">
+
+                </div>
+            </div>
+            <div id="controlContainer">
+                <button onclick="updateUserPick(0);">ROCK</button>
+                <button onclick="updateUserPick(1);">PAPER</button>
+                <button onclick="updateUserPick(2);">SCISSORS</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="./javascript/logic.js"></script>
+</body>
+</html>
