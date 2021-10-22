@@ -1,4 +1,9 @@
+// BUG:
+- Sometimes the logic seems to fail.
+
 // TODO:
+- Add media queries to make it work better on smaller screens.
+
 - Add a check that ensures that the first card added to the completion
 stack is an ace.
 
