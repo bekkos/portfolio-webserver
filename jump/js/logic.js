@@ -142,7 +142,7 @@ const startGame = () => {
 const endGame = (score) => {
     clearInterval(gameLoop);
     alert("Game over!\n Your score: " + score);
-    if(localStorage.getItem("highscore") != null && score > localStorage.getItem("highscore")) {
+    if(score > localStorage.getItem("highscore")) {
         localStorage.setItem("highscore", score);
     } 
     startGame();
