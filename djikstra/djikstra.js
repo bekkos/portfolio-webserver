@@ -50,6 +50,7 @@ class Graph {
 
 
     drawGraph() {
+        ctx.lineWidth = 1;
         for(let i = 0; i < this.vertices.length; i++) {
             ctx.fillStyle = "#FFF";
             ctx.beginPath();
