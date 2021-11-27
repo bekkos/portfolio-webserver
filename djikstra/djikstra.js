@@ -185,8 +185,11 @@ class Graph {
 
             previousNode = activeNode;
         }
+        let found = false;
         visited.forEach(e => {
+            
             if(e['node'] == stop) {
+                found = true;
                 let s = "The shortest distance from " + start.value + " to " + stop.value + " is " + e['distance'];
                 let path = []
                 let activeNode = e;
@@ -197,8 +200,12 @@ class Graph {
                 }
                 this.drawResult(s, path);
             }
+            
         })
         
+        if(!found) {
+            this.drawResult("", []);
+        }
     }
 
     drawResult(s, arr) {
@@ -206,8 +213,30 @@ class Graph {
         ctx.fillStyle = "#fff";
         ctx.textBaseline = "top";
         ctx.beginPath();
+        console.log(arr.length);
+        if(arr.length == 0) {
+            ctx.fillText("No path found, try again.", 50, 50);
+            return;
+        }
         ctx.fillText(s, 50, 50);
         ctx.fillText("The shortest path is " + arr.join('-'), 50, 70);
+        let itr = 0;
+        setInterval(() => {
+            if(itr == arr.length-2) {
+                var highestTimeoutId = setTimeout(";");
+                for (var i = 0 ; i < highestTimeoutId ; i++) {
+                    clearTimeout(i); 
+                }
+            }
+            ctx.beginPath();
+            ctx.lineWidth = 3;
+            ctx.moveTo(this.vertices[arr[itr]].xPos, this.vertices[arr[itr]].yPos);
+            ctx.lineTo(this.vertices[arr[itr+1]].xPos, this.vertices[arr[itr+1]].yPos);
+            ctx.strokeStyle = "#46eb34";
+            ctx.stroke();
+
+            itr++;
+        }, 500);
     }
 }
 
@@ -223,7 +252,7 @@ function loop(s, start, stop) {
     }
     g.generateEdges(size * 2);
     g.drawGraph();
-    g.djikstra(g.vertices[start], g.vertices[stop]);
+    g.djikstra(g.vertices[start], g.vertices[stop-1]);
 }
 
 
@@ -233,8 +262,12 @@ function generate() {
     let stop = document.getElementById("stop").value;
     if(size == 0) size = 20;
     if(start == 0) start = 0;
-    if(stop == 0) stop = 19;
+    if(stop == 0) stop = 20;
+    var highestTimeoutId = setTimeout(";");
+    for (var i = 0 ; i < highestTimeoutId ; i++) {
+        clearTimeout(i); 
+    }
     loop(size, start, stop);
 }
 
-loop(20, 1, 19);
+loop(20, 1, 20);
