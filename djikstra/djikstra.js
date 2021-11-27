@@ -1,5 +1,7 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
+var _speed = 100;
+var _size = 6;
 
 canvas.height = window.innerHeight;
 canvas.width = window.innerWidth;
@@ -54,9 +56,9 @@ class Graph {
         for(let i = 0; i < this.vertices.length; i++) {
             ctx.fillStyle = "#FFF";
             ctx.beginPath();
-            ctx.arc(this.vertices[i].xPos, this.vertices[i].yPos, 10, 0, 2 * Math.PI);
+            ctx.arc(this.vertices[i].xPos, this.vertices[i].yPos, _size, 0, 2 * Math.PI);
             ctx.fill();
-            ctx.font = "30px Arial";
+            ctx.font = "15px Arial";
             ctx.fillStyle = "#ff0000";
             ctx.textBaseline = "top";
             ctx.fillText(this.vertices[i].value, this.vertices[i].xPos + 5, this.vertices[i].yPos);
@@ -229,15 +231,34 @@ class Graph {
                     clearTimeout(i); 
                 }
             }
+
             ctx.beginPath();
-            ctx.lineWidth = 3;
+            ctx.lineWidth = 5;
             ctx.moveTo(this.vertices[arr[itr]].xPos, this.vertices[arr[itr]].yPos);
             ctx.lineTo(this.vertices[arr[itr+1]].xPos, this.vertices[arr[itr+1]].yPos);
-            ctx.strokeStyle = "#46eb34";
+
+            ctx.strokeStyle = "#ffe208";
             ctx.stroke();
 
+            ctx.fillStyle = "#46eb34";
+            ctx.beginPath();
+            ctx.arc(this.vertices[arr[itr+1]].xPos, this.vertices[arr[itr+1]].yPos, _size * 2, 0, 2 * Math.PI);
+            ctx.fill();
+
+            ctx.fillStyle = "#ffe208";
+            ctx.beginPath();
+            ctx.arc(this.vertices[arr[itr]].xPos, this.vertices[arr[itr]].yPos, _size * 2, 0, 2 * Math.PI);
+            ctx.fill();
+
+            if(itr < 2) {
+                ctx.fillStyle = "#0810ff";
+                ctx.beginPath();
+                ctx.arc(this.vertices[arr[0]].xPos, this.vertices[arr[0]].yPos, _size * 2, 0, 2 * Math.PI);
+                ctx.fill();
+            }
+
             itr++;
-        }, 500);
+        }, _speed);
     }
 }
 
@@ -261,9 +282,20 @@ function generate() {
     let size = document.getElementById("size").value;
     let start = document.getElementById("start").value;
     let stop = document.getElementById("stop").value;
-    if(size == 0) size = 20;
+    let aSpeed = document.getElementById("speed").value;
+    if(start != 0 || stop !=0) {
+        if(start > stop || start == stop || start == stop-1){
+            alert("Start can not be greater or equal to stop - 1. Reverse order.");
+            return;
+        }
+    }
+    if(aSpeed != 0) {
+        _speed = aSpeed;
+    }
+    if(size == 0) size = 150;
     if(start == 0) start = 0;
-    if(stop == 0) stop = 20;
+    if(stop == 0) stop = 101;
+    _size = 6;
     var highestTimeoutId = setTimeout(";");
     for (var i = 0 ; i < highestTimeoutId ; i++) {
         clearTimeout(i); 
@@ -271,4 +303,4 @@ function generate() {
     loop(size, start, stop);
 }
 
-loop(20, 1, 20);
+loop(150, 0, 101);
