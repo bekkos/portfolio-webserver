@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AAA</title>
+    <style>
+        * {
+            margin:0;
+            padding:0;
+            overflow: hidden;
+            
+        }
+        body {
+             background-color: black;
+        }
+        #canvas {
+            background-color: black;
+            z-index: -11;
+        }
+
+        button {
+            z-index: 100;
+            background-color: white;
+        }
+
+
+        
+    </style>
+</head>
+<body>
+    <input type="number" id="size" placeholder="# of nodes" required>
+    <input type="number" id="start" placeholder="id of start node" required>
+    <input type="number" id="stop" placeholder="id of destination node" required>
+    <button onclick="generate();">GENERATE</button>
+    <canvas id="canvas" style="background-color: black;">
+    </canvas>
+
+    <script src="djikstra.js"></script>
+</body>
+</html>
