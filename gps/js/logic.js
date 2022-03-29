@@ -7,3 +7,5 @@ const success = (data) => {
 
 geo.getCurrentPosition(success);
 document.getElementById("output").innerText(position);
+
+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

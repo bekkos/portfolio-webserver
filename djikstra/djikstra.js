@@ -115,6 +115,21 @@ class Graph {
         return neighbours;
     }
 
+    getAllNeighboursForResults(node)  {
+        let neighbours = [];
+        for(let i = 0; i < this.edges.length; i++) {
+            if(this.edges[i]['aNode'] === node) {
+                neighbours.push(this.edges[i]['bNode']);
+            }
+            
+            if(this.edges[i]['bNode'] === node) {
+                neighbours.push(this.edges[i]['aNode']);
+            }
+            
+        }
+        return neighbours;
+    }
+
     generateEdges(limit) {
         for(let i = 0; i < limit; i++) {
             let a = this.vertices[Math.floor(Math.random() * this.vertices.length)];
@@ -216,7 +231,6 @@ class Graph {
         ctx.fillStyle = "#fff";
         ctx.textBaseline = "top";
         ctx.beginPath();
-        console.log(arr.length);
         if(arr.length == 0) {
             ctx.fillText("No path found, try again.", 50, 50);
             return;
@@ -232,13 +246,33 @@ class Graph {
                 }
             }
 
-            ctx.beginPath();
+            
+            
             ctx.lineWidth = 5;
+            ctx.beginPath();
             ctx.moveTo(this.vertices[arr[itr]].xPos, this.vertices[arr[itr]].yPos);
             ctx.lineTo(this.vertices[arr[itr+1]].xPos, this.vertices[arr[itr+1]].yPos);
 
             ctx.strokeStyle = "#ffe208";
             ctx.stroke();
+
+            if(itr < arr.length-1) {
+                ctx.lineWidth = 1;
+                let neighbours = this.getAllNeighboursForResults(this.vertices[arr[itr]]);
+                neighbours.forEach(e => {
+                    let pathNode = false;
+                    for(let i = 0; i < arr.length; i++) {
+                        if(e.value == arr[i]) pathNode = true;
+                    }
+                    if(!pathNode) {
+                        ctx.beginPath();
+                        ctx.moveTo(this.vertices[arr[itr]].xPos, this.vertices[arr[itr]].yPos);
+                        ctx.lineTo(e.xPos, e.yPos);
+                        ctx.strokeStyle = "#ff0808";
+                        ctx.stroke();
+                    }
+                })
+            }
 
             ctx.fillStyle = "#46eb34";
             ctx.beginPath();
