@@ -21,9 +21,49 @@
         canvas {
             background-color: black;
         }
+
+        .controls {
+            width: 300px;
+            height: 65px;
+            background-color: white;
+            position: absolute;
+
+            top: 50px;
+            left: 50px;
+            border-radius: 10px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            flex-direction: column;
+        }
+
+        button {
+            margin: 5px;
+            padding: 5px;
+        }
+
+        input {
+            width: 100px;
+            padding: 5px;
+        }
+        
+        p {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
     </style>
 </head>
 <body>
+
+    <div class="controls" id="ui">
+        <div class="">
+            <button onclick="toggleState()">Play/Pause</button>
+            <input type="text" id="speed" placeholder="Speed in ms">
+            <button onclick="setSpeed();">Set</button>
+        </div>
+        <p>Press "H" to toggle UI.</p>
+    </div>
     <canvas id="canvas">
 
     </canvas>

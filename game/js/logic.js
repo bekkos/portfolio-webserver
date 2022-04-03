@@ -1,6 +1,8 @@
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
 let _STATE = false;
+let _SPEED = 50;
+let _uiSTATE = true;
 
 canvas.height = window.innerHeight;
 canvas.width = window.innerWidth;
@@ -155,12 +157,15 @@ const updateGame = () => {
 }
 
 window.addEventListener('click', event => {
-    console.log(Math.floor(event.x / _cellSize) + " | " + Math.floor(event.y / _cellSize));
-    let x = Math.floor(event.x / _cellSize);
-    let y = Math.floor(event.y / _cellSize);
-    lastGen[x][y] = !lastGen[x][y]
-    currentGen[x][y] = !currentGen[x][y]
-    render();
+    if(event.target == canvas) {
+        console.log(Math.floor(event.x / _cellSize) + " | " + Math.floor(event.y / _cellSize));
+        let x = Math.floor(event.x / _cellSize);
+        let y = Math.floor(event.y / _cellSize);
+        lastGen[x][y] = !lastGen[x][y]
+        currentGen[x][y] = !currentGen[x][y]
+        render();
+    }
+    
 });
 
 window.addEventListener('keydown', event => {
@@ -174,9 +179,41 @@ window.addEventListener('keydown', event => {
         render();
         console.log(_STATE);
     }
-    
+    if(event.keyCode == 72) {
+        toggleUI();
+    }
 });
 
+function toggleState() {
+    if(_STATE == false) {
+        start();
+    } else {
+        pause();
+    }
+    _STATE = !_STATE;
+    render();
+    console.log(_STATE);
+}
+
+
+function setSpeed() {
+    let speed = parseInt(document.getElementById("speed").value);
+    if(!isNaN(speed) && speed > 0 && speed < 10000) {
+        _SPEED = speed;
+    } else {
+        console.error("Speed must be between 1 and 10000 ms.");
+    }
+}
+
+function toggleUI() {
+    if(_uiSTATE) {
+        document.getElementById("ui").style.display = "none";
+    } else {
+        document.getElementById("ui").style.display = "flex";
+    }
+
+    _uiSTATE = !_uiSTATE;
+}
 
 initiateBoard();
 
@@ -191,7 +228,7 @@ const start = () => {
     setInterval(() => {
         updateGame();
         render();
-    }, 50);
+    }, _SPEED);
 }
 
 
