@@ -1,3 +1,3 @@
 # bekkos.tech
 
-Personal website. www.bekkos.tech
+Personal website. http://bekkos.tech
