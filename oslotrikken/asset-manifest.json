@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/static/css/main.ef29b7dc.css",
-    "main.js": "/static/js/main.e8ec68ce.js",
+    "main.css": "/oslotrikken/static/css/main.ef29b7dc.css",
+    "main.js": "/oslotrikken/static/js/main.e8ec68ce.js",
     "index.html": "/index.html",
-    "main.ef29b7dc.css.map": "/static/css/main.ef29b7dc.css.map",
-    "main.e8ec68ce.js.map": "/static/js/main.e8ec68ce.js.map"
+    "main.ef29b7dc.css.map": "/oslotrikken/static/css/main.ef29b7dc.css.map",
+    "main.e8ec68ce.js.map": "/oslotrikken/static/js/main.e8ec68ce.js.map"
   },
   "entrypoints": [
     "static/css/main.ef29b7dc.css",
